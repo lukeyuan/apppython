@@ -1,0 +1,35 @@
+#!/bin/bash -eu
+
+set +u
+
+function fetchAll {
+  echo "do nothing"
+  }
+
+
+
+case "$1" in
+  start)         fetchAll ;;
+  stop)          fetchAll ;;
+  restart)       fetchAll ;;
+  status)        fetchAll ;;
+  reload)        
+	  if [[ -n "$DOWNLOAD_PATH" ]]; then
+
+		  wget -N $DOWNLOAD_PATH -P $OPENSHIFT_REPO_DIR/wsgi/openshift/
+
+	  fi
+	  ;;
+  tidy)          fetchAll ;;
+  pre-build)     fetchAll ;;
+  build)         fetchAll ;;
+  deploy)        fetchAll ;;
+  post-deploy)   fetchAll ;;
+  pre-snapshot)  fetchAll ;;
+  post-snapshot) fetchAll ;;
+  pre-restore)   fetchAll ;;
+  post-restore)  fetchAll ;;
+  *)           exit 0
+esac
+
+exit 0
